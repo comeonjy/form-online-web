@@ -1,0 +1,237 @@
+<template>
+  <el-container>
+    <el-header>
+    </el-header>
+    <el-main>
+      <el-row>
+        <el-col :xs="0" :sm="2" :md="4" :lg="7"></el-col>
+        <el-col :xs="24" :sm="20" :md="16" :lg="10" style="background-color: #ffffff">
+          <el-row>
+            <img src="../../public/images/img.webp" alt="" style="width: 100%;">
+          </el-row>
+          <el-row>
+            <el-col>
+              <h2>{{ data.form_title }}</h2>
+              <h4>{{ data.sub_title }}</h4>
+              <template v-for="(item,index) in data.items" :key="item">
+                <ContentTitle :index="index" :content-title="item.content.content_title"></ContentTitle>
+                <Radio :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                       v-if="item.content.content_type==='radio'"></Radio>
+                <CheckBox :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                          v-else-if="item.content.content_type==='checkbox'"></CheckBox>
+                <Select :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                        v-else-if="item.content.content_type==='select'"></Select>
+                <Textarea :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                          v-else-if="item.content.content_type==='textarea'"></Textarea>
+              </template>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col>
+              <el-button type="primary" style="margin: 100px 0px" @click="submit">提交</el-button>
+            </el-col>
+          </el-row>
+        </el-col>
+        <el-col :xs="0" :sm="2" :md="4" :lg="7"></el-col>
+      </el-row>
+    </el-main>
+    <el-footer>
+      底部
+    </el-footer>
+  </el-container>
+
+</template>
+
+<script>
+
+import {ElNotification} from 'element-plus'
+import Radio from '@/components/form/Radio'
+import CheckBox from '@/components/form/CheckBox'
+import Select from '@/components/form/Select'
+import ContentTitle from '@/components/form/subcomponents/ContentTitle'
+import Textarea from '@/components/form/Textarea'
+
+export default {
+  name: 'App',
+  components: {
+    Select,
+    CheckBox,
+    Radio,
+    ContentTitle,
+    Textarea
+  },
+  methods: {
+    submit: function () {
+      let msg = ''
+      for (let i = 0; i < this.data.items.length; i++) {
+        console.log(this.data.items[i].content.userAnswer)
+        msg = msg + JSON.stringify(this.data.items[i].content.userAnswer)
+      }
+      ElNotification({
+        title: '提交',
+        message: msg,
+        duration: 0
+      })
+      console.log(JSON.stringify(this.data))
+    }
+  },
+  data: function () {
+    return {
+      data: {
+        form_title: '示例问卷',
+        sub_title: '欢迎使用问卷网！这是一份示例问卷。',
+        items: [
+          {
+            content: {
+              content_title: '问卷网支持创建哪些项目？',
+              content_type: 'radio',
+              options: [
+                {
+                  option_type: 'text',
+                  option_content: {
+                    text: '市场调研问卷',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '1'
+                },
+                {
+                  option_type: 'other',
+                  option_content: {
+                    text: '其他',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '2'
+                }
+              ],
+              extend: {
+                require: true
+              },
+              userAnswer: {
+                other: '',
+                select: '2'
+              }
+            }
+          },
+          {
+            content: {
+              content_title: '问卷网支持创建哪些项目？',
+              content_type: 'checkbox',
+              options: [
+                {
+                  option_type: 'text',
+                  option_content: {
+                    text: '市场调研问卷',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '1'
+                },
+                {
+                  option_type: 'other',
+                  option_content: {
+                    text: '其他',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '2'
+                }
+              ],
+              extend: {
+                require: true
+              },
+              userAnswer: {
+                other: 'ok',
+                arrValue: [
+                  '1'
+                ]
+              }
+            }
+          },
+          {
+            content: {
+              content_title: '问卷网支持创建哪些项目？',
+              content_type: 'select',
+              options: [
+                {
+                  option_type: 'text',
+                  option_content: {
+                    text: '市场调研问卷',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '1'
+                },
+                {
+                  option_type: 'other',
+                  option_content: {
+                    text: '其他',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '2'
+                }
+              ],
+              extend: {
+                require: true
+              },
+              userAnswer: {
+                select: '2'
+              }
+            }
+          },
+          {
+            content: {
+              content_title: '问卷网支持创建哪些项目？',
+              content_type: 'textarea',
+              options: [
+                {
+                  option_type: 'text',
+                  option_content: {
+                    text: '市场调研问卷',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '1'
+                },
+                {
+                  option_type: 'other',
+                  option_content: {
+                    text: '其他',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '2'
+                }
+              ],
+              extend: {
+                require: true
+              },
+              userAnswer: {
+                arrValue: ['行动']
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  background-color: #F5F5F5;
+}
+
+.left {
+  text-align: left;
+  margin-left: 20px;
+}
+</style>
