@@ -11,14 +11,21 @@
       </el-card>
     </el-col>
     <el-col>
-      <draggable class="dragArea list-group" :list="data" handle=".handle" group="question" @change="log" itemKey="index">
+      <draggable class="dragArea list-group" :list="data" handle=".handle" group="question" @change="log"
+                 itemKey="index">
         <template #item="{ element,index }">
           <div class="list-group-item">
-            <el-card style="margin: 20px 0">
-              <div class="operate">
+            <el-card style="margin: 20px 0" :class="{border:showBorder[index]}" :id="'content_'+index">
+              <div class="operate" @mouseenter="showBorder[index]=true" @mouseleave="showBorder[index]=false">
+                <el-tooltip content="拖拽" placement="top" effect="light">
                 <i class="el-icon-rank handle"></i>
-                <i class="el-icon-copy-document"></i>
-                <i class="el-icon-delete"></i>
+                </el-tooltip>
+                <el-tooltip content="复制" placement="top" effect="light">
+                <i class="el-icon-copy-document" @click="copyContent(index)"></i>
+                </el-tooltip>
+                <el-tooltip content="删除" placement="top" effect="light">
+                <i class="el-icon-delete" @click="removeContent(index)"></i>
+                </el-tooltip>
               </div>
               <ContentTitle :index="index" v-model:content-title="element.content.content_title"></ContentTitle>
               <Radio :data="element" :index="index" v-if="element.content.content_type==='radio'"></Radio>
@@ -44,10 +51,10 @@ export default {
     ContentTitle
   },
   props: [
-    'data', 'sub_title', 'form_title'
+    'data', 'form_title', 'sub_title'
   ],
   emits: [
-    'update:form_title', 'update:sub_title'
+    'update:data', 'update:form_title', 'update:sub_title'
   ],
   computed: {
     formTitle: {
@@ -70,9 +77,28 @@ export default {
     }
   },
   data: function () {
-    return {}
+    return {
+      showBorder: []
+    }
   },
   methods: {
+    copyContent: function (index) {
+      let arr = this.data
+      arr.splice(index + 1, 0, this.common.deepCopy(this.data[index]))
+      this.$emit('update:data', arr)
+
+      setTimeout(function (){
+        let id = 'content_' + (index + 1)
+        console.log(id)
+        document.getElementById(id).scrollIntoView({ block: 'center', behavior: 'smooth' })
+      }, 100);
+
+    },
+    removeContent: function (index) {
+      let arr = this.data
+      arr.splice(index, 1)
+      this.$emit('update:data', arr)
+    },
     log: function (e) {
       console.log(e)
     }
@@ -95,12 +121,22 @@ export default {
   font-size: 20px;
   font-weight: bold;
 }
-.operate{
+
+.operate {
   text-align: right;
   font-weight: bold;
   font-size: 25px;
 }
-.operate > i{
+
+.operate > i {
   margin: 0 10px;
+}
+
+.operate > i:hover {
+  color: #409eff;
+}
+
+.border {
+  border: solid 1px #409eff;
 }
 </style>

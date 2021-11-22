@@ -1,11 +1,12 @@
 <template>
   <el-row>
     <el-col>
-      <draggable class="dragArea list-group" v-model="questionTypeList" @end="endFn" ghostClass="ghost" :clone="deepCopy"
+      <draggable class="dragArea list-group" v-model="questionTypeList" @end="endFn" ghostClass="ghost"
+                 :clone="this.common.deepCopy"
                  :group="{ name: 'question', pull: 'clone', put: false  }" :sort="false" @change="log" itemKey="index">
         <template #item="{ element }">
           <div class="list-group-item">
-            <el-button>
+            <el-button @click="addContent(element)">
               {{ element.name }}
             </el-button>
           </div>
@@ -24,21 +25,19 @@ export default {
   components: {
     draggable
   },
-  props: [
-
-  ],
+  props: [],
+  emits: ['addContent'],
   methods: {
     log: function (e) {
       console.log(e)
     },
-    endFn (e) {
+    endFn(e) {
       const oldIndex = e.oldIndex
       const newIndex = e.newIndex
-      console.log(oldIndex,newIndex)
+      console.log(oldIndex, newIndex)
     },
-    deepCopy: function (e){
-      console.log(e)
-      return JSON.parse(JSON.stringify(e));
+    addContent: function (e) {
+      this.$emit('addContent',e)
     }
   },
   data: function () {

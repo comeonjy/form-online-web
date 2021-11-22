@@ -4,10 +4,11 @@
     <el-main>
       <el-row>
         <el-col :span="4">
-          <QuestionType :data="questionTypeList"></QuestionType>
+          <QuestionType @add-content="addContent"></QuestionType>
         </el-col>
         <el-col :span="16">
-          <MainEdit v-model:data="data.items" v-model:sub_title="data.sub_title" v-model:form_title="data.form_title"></MainEdit>
+          <MainEdit v-model:data="data.items" v-model:sub_title="data.sub_title"
+                    v-model:form_title="data.form_title"></MainEdit>
         </el-col>
         <el-col :span="4"></el-col>
       </el-row>
@@ -40,6 +41,7 @@ export default {
   },
   data: function () {
     return {
+      showBorder: [],
       data: {
         form_title: '问卷标题',
         sub_title: '感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！',
@@ -91,6 +93,11 @@ export default {
           name: '填空题'
         },
       ]
+    }
+  },
+  methods: {
+    addContent: function (val) {
+      this.data.items.push(this.common.deepCopy(val))
     }
   }
 }

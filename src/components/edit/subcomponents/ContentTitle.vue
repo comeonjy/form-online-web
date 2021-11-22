@@ -6,7 +6,14 @@
           <span style="font-size: 18px;font-weight: bold;margin-top: 10px">{{ index + 1 }}.</span>
         </el-col>
         <el-col :span="23">
+          <el-tooltip content="" placement="top-start" effect="light">
+            <template #content>
+              <span>
+              <i class="el-icon-edit-outline"></i>
+              </span>
+            </template>
           <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 6 }" v-model="value"></el-input>
+          </el-tooltip>
         </el-col>
       </el-row>
     </div>
@@ -49,10 +56,6 @@ export default {
 
 .input-no-border >>> .el-textarea__inner:hover {
   background-color: rgba(128, 133, 144, .06);
-}
-
-.input-no-border >>> .el-textarea {
-  //width: 80%;
 }
 
 .input-no-border > i {
