@@ -1,21 +1,21 @@
 <template>
   <template v-for="(option,index) in data.content.options" :key="option">
-    <div class="left" @mouseenter="this.showOption[index]=true" @mouseleave="this.showOption[index]=false">
-      <el-radio-group style="width: 100%;">
+    <div class="left margin-left-20" @mouseenter="this.showOption[index]=true" @mouseleave="this.showOption[index]=false">
+      <el-radio-group class="width100">
         <el-radio :label="1">
 
           <template v-if="option.option_type==='text'">
               <span class="input-no-border">
-              <el-input v-model="option.option_content.text" style="width: 80%"></el-input>
+              <el-input v-model="option.option_content.text" class="width80"></el-input>
              </span>
           </template>
 
           <template v-else-if="option.option_type==='other'">
-            <span class="other-input">
-              <el-input v-model="option.option_content.text" style="width: 65%"></el-input>
+            <span class="input-no-border">
+              <el-input v-model="option.option_content.text" class="width65"></el-input>
             </span>
             <span class="other-input-mini">
-            <el-input disabled size="mini" style="width: 15%;"></el-input>
+            <el-input disabled size="mini" class="width15"></el-input>
             </span>
           </template>
 
@@ -93,7 +93,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "../../assets/css/edit/css.scss";
 
 i {
   font-size: 20px;
@@ -104,6 +105,14 @@ i:hover {
   color: red;
 }
 
+.el-radio {
+  width: 100%;
+  margin: 5px;
+}
+
+</style>
+
+<style scoped>
 .input-no-border >>> .el-input__inner {
   border: 0;
   padding-left: 0;
@@ -112,20 +121,5 @@ i:hover {
 
 .input-no-border >>> .el-input__inner:hover {
   background-color: rgba(128, 133, 144, .06);
-}
-
-.other-input >>> .el-input__inner {
-  border: 0;
-  padding-left: 0;
-  font-size: 16px;
-}
-
-.other-input >>> .el-input__inner:hover {
-  background-color: rgba(128, 133, 144, .06);
-}
-
-.left >>> .el-radio {
-  width: 100%;
-  margin: 5px;
 }
 </style>

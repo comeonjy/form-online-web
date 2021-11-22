@@ -18,13 +18,13 @@
             <el-card style="margin: 20px 0" :class="{border:showBorder[index]}" :id="'content_'+index">
               <div class="operate" @mouseenter="showBorder[index]=true" @mouseleave="showBorder[index]=false">
                 <el-tooltip content="拖拽" placement="top" effect="light">
-                <i class="el-icon-rank handle"></i>
+                  <i class="el-icon-rank handle"></i>
                 </el-tooltip>
                 <el-tooltip content="复制" placement="top" effect="light">
-                <i class="el-icon-copy-document" @click="copyContent(index)"></i>
+                  <i class="el-icon-copy-document" @click="copyContent(index)"></i>
                 </el-tooltip>
                 <el-tooltip content="删除" placement="top" effect="light">
-                <i class="el-icon-delete" @click="removeContent(index)"></i>
+                  <i class="el-icon-delete" @click="removeContent(index)"></i>
                 </el-tooltip>
               </div>
               <ContentTitle :index="index" v-model:content-title="element.content.content_title"></ContentTitle>
@@ -87,10 +87,10 @@ export default {
       arr.splice(index + 1, 0, this.common.deepCopy(this.data[index]))
       this.$emit('update:data', arr)
 
-      setTimeout(function (){
+      setTimeout(function () {
         let id = 'content_' + (index + 1)
         console.log(id)
-        document.getElementById(id).scrollIntoView({ block: 'center', behavior: 'smooth' })
+        document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
       }, 100);
 
     },
@@ -107,6 +107,13 @@ export default {
 </script>
 
 <style scoped>
+@import "../../assets/css/edit/css.scss";
+
+.input-form_title >>> .el-input__inner {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .input-no-border >>> .el-input__inner {
   border: 0;
   padding-left: 0;
@@ -115,28 +122,5 @@ export default {
 
 .input-no-border >>> .el-input__inner:hover {
   background-color: rgba(128, 133, 144, .06);
-}
-
-.input-form_title >>> .el-input__inner {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.operate {
-  text-align: right;
-  font-weight: bold;
-  font-size: 25px;
-}
-
-.operate > i {
-  margin: 0 10px;
-}
-
-.operate > i:hover {
-  color: #409eff;
-}
-
-.border {
-  border: solid 1px #409eff;
 }
 </style>

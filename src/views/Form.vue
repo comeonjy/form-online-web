@@ -13,6 +13,8 @@
             <el-col>
               <h2>{{ data.form_title }}</h2>
               <h4>{{ data.sub_title }}</h4>
+              <div class="margin-left-20">
+
               <template v-for="(item,index) in data.items" :key="item">
                 <ContentTitle :index="index" :content-title="item.content.content_title"></ContentTitle>
                 <Radio :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
@@ -24,6 +26,7 @@
                 <Textarea :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
                           v-else-if="item.content.content_type==='textarea'"></Textarea>
               </template>
+              </div>
             </el-col>
           </el-row>
           <el-row>
@@ -221,17 +224,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background-color: #F5F5F5;
-}
 
-.left {
-  text-align: left;
-  margin-left: 20px;
-}
 </style>

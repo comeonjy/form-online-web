@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
 import common from './assets/js/common.js'
-import './assets/css/css.css'
+import './assets/css/css.scss'
 
 const app = createApp(App)
 installElementPlus(app)

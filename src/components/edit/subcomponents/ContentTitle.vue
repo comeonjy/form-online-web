@@ -1,18 +1,16 @@
 <template>
-  <div class="left">
+  <div class="left margin-left-20">
     <div class="input-no-border">
       <el-row>
-        <el-col :span="1">
-          <span style="font-size: 18px;font-weight: bold;margin-top: 10px">{{ index + 1 }}.</span>
-        </el-col>
-        <el-col :span="23">
+        <el-col>
+            <span>{{ index + 1 }}.</span>
           <el-tooltip content="" placement="top-start" effect="light">
             <template #content>
               <span>
               <i class="el-icon-edit-outline"></i>
               </span>
             </template>
-          <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 6 }" v-model="value"></el-input>
+          <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 6 }" v-model="value" class="width80"></el-input>
           </el-tooltip>
         </el-col>
       </el-row>
@@ -47,7 +45,6 @@ export default {
 
 .input-no-border >>> .el-textarea__inner {
   border: 0;
-  padding-left: 0;
   font-size: 18px;
   font-weight: bold;
   overflow-y: hidden;

@@ -1,0 +1,44 @@
+html{
+  font-size: 62.5%;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  background-color: #F5F5F5;
+}
+
+.left {
+  text-align: left;
+}
+
+
+
+// 无边框
+.no-border {
+  border: 0;
+}
+
+// width class
+@for $i from 1 to 101 {
+  .width#{$i} {
+    width: $i*1%;
+  }
+}
+
+// margin-left class
+@for $i from 1 to 101 {
+  .margin-left-#{$i} {
+    margin-left: #{$i/10}rem;
+  }
+}
+
+// font-size class
+@for $i from 12 to 31 {
+  .font-size-#{$i} {
+    font-size: #{$i/10}rem;
+  }
+}
+
