@@ -1,3 +1,9 @@
+/*
+  编辑页面样式
+ */
+
+@import "./src/assets/css/variables";
+
 .operate {
   text-align: right;
   font-weight: bold;
@@ -9,9 +15,19 @@
 }
 
 .operate > i:hover {
-  color: #409eff;
+  color: $--color-primary;
 }
 
 .border {
-  border: solid 1px #409eff;
+  border: solid 1px $--color-primary;
+}
+
+.input-no-border ::v-deep(.el-input__inner) {
+  border: 0;
+  padding-left: 0;
+  font-size: 16px;
+}
+
+.input-no-border ::v-deep(.el-input__inner:hover) {
+  background-color: rgba(128, 133, 144, .06);
 }

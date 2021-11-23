@@ -1,6 +1,14 @@
-html{
+/*
+  公共页面样式
+ */
+
+@use "sass:math";
+@import "./src/assets/css/variables";
+
+html {
   font-size: 62.5%;
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -13,7 +21,9 @@ html{
 .left {
   text-align: left;
 }
-
+.inline-block{
+  display: inline-block;
+}
 
 
 // 无边框
@@ -31,14 +41,28 @@ html{
 // margin-left class
 @for $i from 1 to 101 {
   .margin-left-#{$i} {
-    margin-left: #{$i/10}rem;
+    margin-left: math.div($i*1rem, 10);
+  }
+}
+
+// margin-top class
+@for $i from 1 to 101 {
+  .margin-top-#{$i} {
+    margin-top: math.div($i*1rem, 10);
+  }
+}
+
+// margin-bottom class
+@for $i from 1 to 101 {
+  .margin-bottom-#{$i} {
+    margin-bottom: math.div($i*1rem, 10);
   }
 }
 
 // font-size class
 @for $i from 12 to 31 {
   .font-size-#{$i} {
-    font-size: #{$i/10}rem;
+    font-size: math.div($i*1rem, 10);
   }
 }
 

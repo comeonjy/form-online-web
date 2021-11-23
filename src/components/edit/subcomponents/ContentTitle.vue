@@ -1,21 +1,24 @@
 <template>
-  <div class="left margin-left-20">
-    <div class="input-no-border">
-      <el-row>
-        <el-col>
-            <span>{{ index + 1 }}.</span>
-          <el-tooltip content="" placement="top-start" effect="light">
-            <template #content>
+  <el-row>
+    <el-col style="text-align: left;display: flex">
+      <div>
+        <span style="margin-left: 20px;font-weight: bold; font-size: 20px;line-height: 37px;">{{ index + 1 }}.</span>
+      </div>
+      <div class="width80">
+        <el-tooltip content="" placement="top-start" effect="light">
+          <template #content>
               <span>
               <i class="el-icon-edit-outline"></i>
               </span>
-            </template>
-          <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 6 }" v-model="value" class="width80"></el-input>
-          </el-tooltip>
-        </el-col>
-      </el-row>
-    </div>
-  </div>
+          </template>
+          <div class="input-no-border">
+            <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 6 }" v-model="value"></el-input>
+          </div>
+        </el-tooltip>
+      </div>
+
+    </el-col>
+  </el-row>
 </template>
 
 <script>

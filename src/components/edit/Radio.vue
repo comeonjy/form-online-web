@@ -1,6 +1,7 @@
 <template>
   <template v-for="(option,index) in data.content.options" :key="option">
-    <div class="left margin-left-20" @mouseenter="this.showOption[index]=true" @mouseleave="this.showOption[index]=false">
+    <div class="left margin-left-20" @mouseenter="this.showOption[index]=true"
+         @mouseleave="this.showOption[index]=false">
       <el-radio-group class="width100">
         <el-radio :label="1">
 
@@ -110,16 +111,4 @@ i:hover {
   margin: 5px;
 }
 
-</style>
-
-<style scoped>
-.input-no-border >>> .el-input__inner {
-  border: 0;
-  padding-left: 0;
-  font-size: 16px;
-}
-
-.input-no-border >>> .el-input__inner:hover {
-  background-color: rgba(128, 133, 144, .06);
-}
 </style>

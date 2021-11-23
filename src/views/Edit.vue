@@ -98,6 +98,11 @@ export default {
   methods: {
     addContent: function (val) {
       this.data.items.push(this.common.deepCopy(val))
+      const len = this.data.items.length
+      setTimeout(function () {
+        let id = 'content_' + (len - 1)
+        document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
+      }, 100);
     }
   }
 }

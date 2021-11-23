@@ -3,9 +3,7 @@
     <el-col>
       <el-card>
          <span class="input-no-border">
-             <div class="input-form_title">
                <el-input v-model="formTitle"></el-input>
-             </div>
               <el-input v-model="subTitle"></el-input>
          </span>
       </el-card>
@@ -14,8 +12,8 @@
       <draggable class="dragArea list-group" :list="data" handle=".handle" group="question" @change="log"
                  itemKey="index">
         <template #item="{ element,index }">
-          <div class="list-group-item">
-            <el-card style="margin: 20px 0" :class="{border:showBorder[index]}" :id="'content_'+index">
+          <div class="list-group-item1">
+            <el-card class="margin-top-20 margin-bottom-20" :class="{border:showBorder[index]}" :id="'content_'+index">
               <div class="operate" @mouseenter="showBorder[index]=true" @mouseleave="showBorder[index]=false">
                 <el-tooltip content="拖拽" placement="top" effect="light">
                   <i class="el-icon-rank handle"></i>
@@ -89,7 +87,6 @@ export default {
 
       setTimeout(function () {
         let id = 'content_' + (index + 1)
-        console.log(id)
         document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
       }, 100);
 
@@ -106,21 +103,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import "../../assets/css/edit/css.scss";
 
-.input-form_title >>> .el-input__inner {
+.input-form_title ::v-deep(.el-input__inner) {
   font-size: 20px;
   font-weight: bold;
 }
 
-.input-no-border >>> .el-input__inner {
-  border: 0;
-  padding-left: 0;
-  font-size: 16px;
-}
-
-.input-no-border >>> .el-input__inner:hover {
-  background-color: rgba(128, 133, 144, .06);
-}
 </style>
