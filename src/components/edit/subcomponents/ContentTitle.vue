@@ -16,7 +16,6 @@
           </div>
         </el-tooltip>
       </div>
-
     </el-col>
   </el-row>
 </template>
