@@ -5,8 +5,8 @@
 @use "sass:math";
 @import "./src/assets/css/variables";
 
-html {
-  font-size: 62.5%;
+body{
+  margin: 0;
 }
 
 #app {
@@ -20,8 +20,10 @@ html {
 
 .left {
   text-align: left;
+  //font-size: 16px;
 }
-.inline-block{
+
+.inline-block {
   display: inline-block;
 }
 
@@ -29,6 +31,14 @@ html {
 // 无边框
 .no-border {
   border: 0;
+}
+
+.margin0 {
+  margin: 0;
+}
+
+.padding {
+  padding: 0;
 }
 
 // width class
@@ -41,28 +51,35 @@ html {
 // margin-left class
 @for $i from 1 to 101 {
   .margin-left-#{$i} {
-    margin-left: math.div($i*1rem, 10);
+    margin-left: $i*1px;
+  }
+}
+
+// margin-right class
+@for $i from 1 to 101 {
+  .margin-right-#{$i} {
+    margin-right: $i*1px;
   }
 }
 
 // margin-top class
 @for $i from 1 to 101 {
   .margin-top-#{$i} {
-    margin-top: math.div($i*1rem, 10);
+    margin-top: $i*1px;
   }
 }
 
 // margin-bottom class
 @for $i from 1 to 101 {
   .margin-bottom-#{$i} {
-    margin-bottom: math.div($i*1rem, 10);
+    margin-bottom: $i*1px;
   }
 }
 
 // font-size class
 @for $i from 12 to 31 {
   .font-size-#{$i} {
-    font-size: math.div($i*1rem, 10);
+    font-size: $i*1px;
   }
 }
 

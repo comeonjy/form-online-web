@@ -46,7 +46,7 @@ export default {
   font-size: 25px;
 }
 
-.input-no-border >>> .el-textarea__inner {
+.input-no-border ::v-deep(.el-textarea__inner) {
   border: 0;
   font-size: 18px;
   font-weight: bold;
@@ -54,7 +54,7 @@ export default {
   resize: none;
 }
 
-.input-no-border >>> .el-textarea__inner:hover {
+.input-no-border ::v-deep(.el-textarea__inner:hover) {
   background-color: rgba(128, 133, 144, .06);
 }
 

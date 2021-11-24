@@ -1,7 +1,5 @@
 <template>
   <el-container>
-    <el-header>
-    </el-header>
     <el-main>
       <el-row>
         <el-col :xs="0" :sm="2" :md="4" :lg="7"></el-col>
@@ -11,21 +9,21 @@
           </el-row>
           <el-row>
             <el-col>
-              <h2>{{ data.form_title }}</h2>
-              <h4>{{ data.sub_title }}</h4>
-              <div class="margin-left-20">
+              <h4>{{ data.form_title }}</h4>
+              <div class="hi">{{ data.sub_title }}</div>
+              <div class="margin-left-20 margin-right-20">
 
-              <template v-for="(item,index) in data.items" :key="item">
-                <ContentTitle :index="index" :content-title="item.content.content_title"></ContentTitle>
-                <Radio :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                       v-if="item.content.content_type==='radio'"></Radio>
-                <CheckBox :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                          v-else-if="item.content.content_type==='checkbox'"></CheckBox>
-                <Select :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                        v-else-if="item.content.content_type==='select'"></Select>
-                <Textarea :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                          v-else-if="item.content.content_type==='textarea'"></Textarea>
-              </template>
+                <template v-for="(item,index) in data.items" :key="item">
+                  <ContentTitle :index="index" :content-title="item.content.content_title"></ContentTitle>
+                  <Radio :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                         v-if="item.content.content_type==='radio'"></Radio>
+                  <CheckBox :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                            v-else-if="item.content.content_type==='checkbox'"></CheckBox>
+                  <Select :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                          v-else-if="item.content.content_type==='select'"></Select>
+                  <Textarea :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
+                            v-else-if="item.content.content_type==='textarea'"></Textarea>
+                </template>
               </div>
             </el-col>
           </el-row>
@@ -223,6 +221,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.el-main{
+  --el-main-padding:0px;
+}
+.hi{
+  font-size: 16px
+}
 </style>
