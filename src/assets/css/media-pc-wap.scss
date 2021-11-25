@@ -1,0 +1,95 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 320px) {
+  body {
+    margin: 0;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
+
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  html {
+    font-size: 100px !important;
+  }
+
+  body {
+    max-width: 600PX;
+    margin: 0 auto;
+  }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  html {
+    font-size: 100px !important;
+  }
+
+  body {
+    max-width: 600PX;
+    margin: 0 auto;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  html {
+    font-size: 100px !important;
+  }
+
+  body {
+    max-width: 600PX;
+    margin: 0 auto;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1024px) {
+  html {
+    font-size: 100px !important;
+  }
+
+  body {
+    max-width: 700PX;
+    margin: 0 auto;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  html {
+    font-size: 100px !important;
+  }
+
+  body {
+    max-width: 750PX;
+    margin: 0 auto;
+  }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+  html {
+    /* 这里加权重是因为 amfe-flexible 通过行内样式设置了根字体 */
+    font-size: 100px !important;
+  }
+
+  body {
+    /* 顺带提下，这里也可以小写 px，大写 PX 可以让 postcss-pxtorem 忽略转成 rem */
+    max-width: 1000PX;
+    margin: 0 auto;
+  }
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /* Styles */
+}

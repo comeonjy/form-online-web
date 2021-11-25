@@ -62,6 +62,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../../assets/css/variables.scss';
 
+.el-input ::v-deep(.el-input__inner) {
+  border-width: 0 0 2px 0;
+  border-bottom: solid 2px $--color-primary;
+  border-radius: 0;
+}
 </style>

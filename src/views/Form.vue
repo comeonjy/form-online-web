@@ -1,16 +1,15 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main >
       <el-row>
-        <el-col :xs="0" :sm="2" :md="4" :lg="7"></el-col>
-        <el-col :xs="24" :sm="20" :md="16" :lg="10" style="background-color: #ffffff">
+        <el-col style="background-color: white">
           <el-row>
             <img src="../../public/images/img.webp" alt="" style="width: 100%;">
           </el-row>
           <el-row>
             <el-col>
-              <h4>{{ data.form_title }}</h4>
-              <div class="hi">{{ data.sub_title }}</div>
+              <div class="font-size-22 margin-top-20 margin-bottom-20">{{ data.form_title }}</div>
+              <div class="font-size-16 color-grey">{{ data.sub_title }}</div>
               <div class="margin-left-20 margin-right-20">
 
                 <template v-for="(item,index) in data.items" :key="item">
@@ -33,7 +32,6 @@
             </el-col>
           </el-row>
         </el-col>
-        <el-col :xs="0" :sm="2" :md="4" :lg="7"></el-col>
       </el-row>
     </el-main>
     <el-footer>
@@ -221,11 +219,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" >
+@import '../assets/css/media-pc-wap.scss';
+
 .el-main{
-  --el-main-padding:0px;
+  padding: 0 !important;
 }
-.hi{
+
+.hi {
   font-size: 16px
 }
 </style>

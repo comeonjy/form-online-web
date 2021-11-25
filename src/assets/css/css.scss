@@ -5,9 +5,6 @@
 @use "sass:math";
 @import "./src/assets/css/variables";
 
-body{
-  margin: 0;
-}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -20,11 +17,18 @@ body{
 
 .left {
   text-align: left;
-  //font-size: 16px;
+}
+
+.right {
+  text-align: right;
 }
 
 .inline-block {
   display: inline-block;
+}
+
+.color-grey {
+  color: grey;
 }
 
 

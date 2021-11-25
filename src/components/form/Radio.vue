@@ -1,17 +1,14 @@
 <template>
-  <template v-for="(option) in data.content.options" :key="option">
+  <template v-for="(option,index) in data.content.options" :key="option">
     <div class="left">
       <el-radio-group v-model="radioValue">
-        <el-radio :label="option.option_value">
-          <template v-if="option.option_type==='text'">
-            {{ option.option_content.text }}
-          </template>
-          <template v-else-if="option.option_type==='other'">
-            {{ option.option_content.text }}
-            <el-input v-model="answerOther" @focus="focusOtherInput(option.option_value)"></el-input>
+        <el-radio :label="option.option_value" name="1" @change="changeRadio(index,option.option_type)">
+          {{ option.option_content.text }}
+          <template v-if="option.option_type==='other'">
+            <el-input v-model="answerOther" v-show="showOtherInput[index] || userAnswer.select===option.option_value"
+                      @focus="focusOtherInput(option.option_value)"></el-input>
           </template>
         </el-radio>
-        <br>
       </el-radio-group>
     </div>
   </template>
@@ -49,7 +46,9 @@ export default {
     }
   },
   data: function () {
-    return {}
+    return {
+      showOtherInput: []
+    }
   },
   methods: {
     focusOtherInput: function (val) {
@@ -57,11 +56,23 @@ export default {
         other: this.answerOther,
         select: val
       })
+    },
+    changeRadio: function (index, type) {
+      console.log(index, type)
+      if (type === 'other') {
+        this.showOtherInput[index] = true
+      }
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../../assets/css/variables.scss';
 
+.el-input ::v-deep(.el-input__inner) {
+  border-width: 0 0 2px 0;
+  border-bottom: solid 2px $--color-primary;
+  border-radius: 0;
+}
 </style>

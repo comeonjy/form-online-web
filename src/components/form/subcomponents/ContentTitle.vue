@@ -1,5 +1,5 @@
 <template>
-  <p class="left" >{{ index + 1 }}. {{ contentTitle }}</p>
+  <p class="left font-size-18" >{{ index + 1 }}. {{ contentTitle }}</p>
 </template>
 
 <script>
@@ -10,7 +10,5 @@ export default {
 </script>
 
 <style scoped>
-p{
-  font-size: 16px;
-}
+
 </style>
