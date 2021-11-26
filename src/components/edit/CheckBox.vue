@@ -2,7 +2,7 @@
   <template v-for="(option,index) in data.content.options" :key="option">
     <div class="left margin-left-20" @mouseenter="this.showOption[index]=true"
          @mouseleave="this.showOption[index]=false">
-        <el-radio  :label="1">
+        <el-checkbox class="width100" >
 
           <template v-if="option.option_type==='text'">
               <span class="input-no-border">
@@ -25,8 +25,7 @@
             </el-tooltip>
           </span>
 
-
-        </el-radio>
+        </el-checkbox>
     </div>
   </template>
   <div class="button-no-border">
@@ -47,7 +46,7 @@
 <script>
 
 export default {
-  name: 'Radio',
+  name: 'CheckBox',
   props: ['data', 'index'],
   emits: ['update:data'],
   data: function () {
@@ -101,7 +100,7 @@ i:hover {
   color: red;
 }
 
-.el-radio {
+::v-deep(.el-checkbox__label) {
   width: 100%;
   margin: 5px;
 }

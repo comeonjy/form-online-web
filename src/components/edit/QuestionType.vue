@@ -37,7 +37,7 @@ export default {
       console.log(oldIndex, newIndex)
     },
     addContent: function (e) {
-      this.$emit('addContent',e)
+      this.$emit('addContent', e)
     }
   },
   data: function () {
@@ -73,9 +73,38 @@ export default {
           }
         },
         {
-          id: 2,
-          type: 'checkbox',
-          name: '多选题'
+          name: '多选题',
+          content: {
+            content_title: '请选择选项',
+            content_type: 'checkbox',
+            options: [
+              {
+                option_type: 'text',
+                option_content: {
+                  text: '选项1',
+                  explain: '选项说明',
+                },
+                option_value: '1'
+              },
+              {
+                option_type: 'text',
+                option_content: {
+                  text: '选项2',
+                  explain: '选项说明',
+                },
+                option_value: '2'
+              }
+            ],
+            extend: {
+              require: true
+            },
+            userAnswer: {
+              other: 'ok',
+              arrValue: [
+                '1'
+              ]
+            }
+          }
         },
         {
           id: 3,

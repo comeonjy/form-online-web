@@ -4,24 +4,6 @@
 
 @import "./src/assets/css/variables";
 
-.operate {
-  text-align: right;
-  font-weight: bold;
-  font-size: 25px;
-}
-
-.operate > i {
-  margin: 0 10px;
-}
-
-.operate > i:hover {
-  color: $--color-primary;
-}
-
-.border {
-  border: solid 1px $--color-primary;
-}
-
 .input-no-border ::v-deep(.el-input__inner) {
   border: 0;
   padding-left: 0;

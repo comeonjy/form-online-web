@@ -1,23 +1,11 @@
 <template>
-  <el-row>
-    <el-col style="text-align: left;display: flex">
-      <div>
-        <span style="margin-left: 20px;font-weight: bold; font-size: 20px;line-height: 37px;">{{ index + 1 }}.</span>
+  <el-row type="flex" class="left">
+      <span class="serial">{{ index + 1 }}.</span>
+    <div class="width80">
+      <div class="input-no-border">
+        <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 6 }" v-model="value"></el-input>
       </div>
-      <div class="width80">
-        <el-tooltip content="" placement="top-start" effect="light">
-          <template #content>
-              <span>
-              <i class="el-icon-edit-outline"></i>
-              </span>
-          </template>
-          <div class="input-no-border">
-            <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 6 }" v-model="value"></el-input>
-          </div>
-        </el-tooltip>
-      </div>
-
-    </el-col>
+    </div>
   </el-row>
 </template>
 
@@ -42,8 +30,15 @@ export default {
 
 <style scoped>
 
+.serial {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 37px;
+}
+
 .input-no-border {
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .input-no-border ::v-deep(.el-textarea__inner) {

@@ -15,9 +15,6 @@
 
       <el-row>
         <el-col :span="6">
-          <RawDisplayed class="col-3" :value="questionTypeList" title="List 1"/>
-        </el-col>
-        <el-col :span="6">
           <RawDisplayed class="col-3" :value="data.items" title="List 2"/>
         </el-col>
       </el-row>
@@ -47,62 +44,18 @@ export default {
         sub_title: '感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！',
         items: []
       },
-      questionTypeList: [
-        {
-          name: '单选题',
-          content: {
-            content_title: '请选择一个选项',
-            content_type: 'radio',
-            options: [
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项1',
-                  explain: '选项说明',
-                },
-                option_value: '1'
-              },
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项2',
-                  explain: '选项说明',
-                },
-                option_value: '2'
-              }
-            ],
-            extend: {
-              require: true
-            },
-            userAnswer: {}
-          }
-        },
-        {
-          id: 2,
-          type: 'checkbox',
-          name: '多选题'
-        },
-        {
-          id: 3,
-          type: 'select',
-          name: '下拉题'
-        },
-        {
-          id: 4,
-          type: 'fillblank',
-          name: '填空题'
-        },
-      ]
     }
   },
   methods: {
     addContent: function (val) {
+      console.log(this.data.items)
+      console.log(val)
       this.data.items.push(this.common.deepCopy(val))
-      const len = this.data.items.length
-      setTimeout(function () {
-        let id = 'content_' + (len - 1)
-        document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
-      }, 100);
+      // const len = this.data.items.length
+      // setTimeout(function () {
+      //   let id = 'content_' + (len - 1)
+      //   document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
+      // }, 100);
     }
   }
 }

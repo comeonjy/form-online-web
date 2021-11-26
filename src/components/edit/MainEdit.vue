@@ -4,7 +4,7 @@
       <el-card>
          <span class="input-no-border">
                <el-input v-model="formTitle"></el-input>
-              <el-input v-model="subTitle"></el-input>
+                <el-input v-model="subTitle"></el-input>
          </span>
       </el-card>
     </el-col>
@@ -12,23 +12,22 @@
       <draggable class="dragArea list-group" :list="data" handle=".handle" group="question" @change="log"
                  itemKey="index">
         <template #item="{ element,index }">
-          <div class="list-group-item1">
-            <el-card class="margin-top-20 margin-bottom-20" :class="{border:showBorder[index]}" :id="'content_'+index">
-              <div class="operate" @mouseenter="showBorder[index]=true" @mouseleave="showBorder[index]=false">
-                <el-tooltip content="拖拽" placement="top" effect="light">
-                  <i class="el-icon-rank handle"></i>
-                </el-tooltip>
-                <el-tooltip content="复制" placement="top" effect="light">
-                  <i class="el-icon-copy-document" @click="copyContent(index)"></i>
-                </el-tooltip>
-                <el-tooltip content="删除" placement="top" effect="light">
-                  <i class="el-icon-delete" @click="removeContent(index)"></i>
-                </el-tooltip>
-              </div>
-              <ContentTitle :index="index" v-model:content-title="element.content.content_title"></ContentTitle>
-              <Radio :data="element" :index="index" v-if="element.content.content_type==='radio'"></Radio>
-            </el-card>
-          </div>
+          <el-card class="margin-top-20 margin-bottom-20" :class="{border:showBorder[index]}" :id="'content_'+index">
+            <div class="operate" @mouseenter="showBorder[index]=true" @mouseleave="showBorder[index]=false">
+              <el-tooltip content="拖拽" placement="top" effect="light">
+                <i class="el-icon-rank handle"></i>
+              </el-tooltip>
+              <el-tooltip content="复制" placement="top" effect="light">
+                <i class="el-icon-copy-document" @click="copyContent(index)"></i>
+              </el-tooltip>
+              <el-tooltip content="删除" placement="top" effect="light">
+                <i class="el-icon-delete" @click="removeContent(index)"></i>
+              </el-tooltip>
+            </div>
+            <ContentTitle :index="index" v-model:content-title="element.content.content_title"></ContentTitle>
+            <Radio :data="element" :index="index" v-if="element.content.content_type==='radio'"></Radio>
+            <CheckBox :data="element" :index="index" v-if="element.content.content_type==='checkbox'"></CheckBox>
+          </el-card>
         </template>
       </draggable>
     </el-col>
@@ -40,10 +39,12 @@
 import draggable from "vuedraggable";
 import Radio from "@/components/edit/Radio";
 import ContentTitle from "@/components/edit/subcomponents/ContentTitle";
+import CheckBox from "@/components/edit/CheckBox";
 
 export default {
   name: "MainEdit",
   components: {
+    CheckBox,
     draggable,
     Radio,
     ContentTitle
@@ -105,6 +106,25 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/css/edit/css.scss";
+
+.border {
+  border: solid 1px $--color-primary;
+  box-shadow: 8px 8px 14px 1px rgb(92 112 128 / 60%)!important;
+}
+
+.operate {
+  text-align: right;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.operate > i {
+  margin: 0 10px;
+}
+
+.operate > i:hover {
+  color: $--color-primary;
+}
 
 .input-form_title ::v-deep(.el-input__inner) {
   font-size: 20px;
