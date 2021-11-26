@@ -8,7 +8,7 @@
           </template>
           <template v-else-if="option.option_type==='other'">
             {{ option.option_content.text }}
-            <el-input v-model="answerOther" @focus="focusOtherInput(option.option_value)"></el-input>
+            <el-input v-model="answerOther" v-show="userAnswer.arrValue.includes(option.option_value)" @focus="focusOtherInput(option.option_value)"></el-input>
           </template>
         </el-checkbox>
         <br>
@@ -65,9 +65,21 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/css/variables.scss';
 
+
+.left ::v-deep(.el-checkbox__label) {
+  font-size: 18px;
+  font-weight: normal;
+}
+
 .el-input ::v-deep(.el-input__inner) {
+  font-size: 18px;
   border-width: 0 0 2px 0;
   border-bottom: solid 2px $--color-primary;
   border-radius: 0;
 }
+
+.el-checkbox {
+  line-height: 40px;
+}
+
 </style>

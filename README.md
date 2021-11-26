@@ -1,24 +1,15 @@
-# form-online-web
+# form-online-web 表单在线
 
-## Project setup
-```
-npm install
-```
+### 介绍
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+拖拽式表单生成器
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 功能
 
-### Lints and fixes files
-```
-npm run lint
-```
+- [x] 单选题
+- [x] 多选它
+- [x] 下拉选择题
+- [x] 问答题
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### TODO
+- [ ] 扩展

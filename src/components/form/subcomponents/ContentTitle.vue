@@ -1,5 +1,5 @@
 <template>
-  <p class="left font-size-18" >{{ index + 1 }}. {{ contentTitle }}</p>
+  <div class="left font-size-20 margin-top-50 margin-bottom-10" >{{ index + 1 }}. {{ contentTitle }}</div>
 </template>
 
 <script>

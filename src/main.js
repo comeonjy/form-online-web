@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
-import 'amfe-flexible'
 import common from './assets/js/common.js'
 import './assets/css/css.scss'
 

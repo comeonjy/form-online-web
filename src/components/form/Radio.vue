@@ -1,11 +1,11 @@
 <template>
-  <template v-for="(option,index) in data.content.options" :key="option">
+  <template v-for="(option) in data.content.options" :key="option">
     <div class="left">
       <el-radio-group v-model="radioValue">
-        <el-radio :label="option.option_value" name="1" @change="changeRadio(index,option.option_type)">
+        <el-radio :label="option.option_value">
           {{ option.option_content.text }}
           <template v-if="option.option_type==='other'">
-            <el-input v-model="answerOther" v-show="showOtherInput[index] || userAnswer.select===option.option_value"
+            <el-input v-model="answerOther" v-show="userAnswer.select===option.option_value"
                       @focus="focusOtherInput(option.option_value)"></el-input>
           </template>
         </el-radio>
@@ -46,9 +46,7 @@ export default {
     }
   },
   data: function () {
-    return {
-      showOtherInput: []
-    }
+    return {}
   },
   methods: {
     focusOtherInput: function (val) {
@@ -56,12 +54,6 @@ export default {
         other: this.answerOther,
         select: val
       })
-    },
-    changeRadio: function (index, type) {
-      console.log(index, type)
-      if (type === 'other') {
-        this.showOtherInput[index] = true
-      }
     }
   }
 }
@@ -70,9 +62,19 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/css/variables.scss';
 
+.left ::v-deep(.el-radio__label) {
+  font-size: 18px;
+  font-weight: normal;
+}
+
 .el-input ::v-deep(.el-input__inner) {
+  font-size: 18px;
   border-width: 0 0 2px 0;
   border-bottom: solid 2px $--color-primary;
   border-radius: 0;
+}
+
+.el-radio {
+  line-height: 40px;
 }
 </style>

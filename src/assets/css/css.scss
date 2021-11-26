@@ -5,6 +5,9 @@
 @use "sass:math";
 @import "./src/assets/css/variables";
 
+body{
+  margin: 0;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -13,7 +16,9 @@
   text-align: center;
   color: #2c3e50;
   background-color: #F5F5F5;
+  font-size: 18px;
 }
+
 
 .left {
   text-align: left;
@@ -31,10 +36,31 @@
   color: grey;
 }
 
+// width class
+@for $i from 1 to 101 {
+  .width#{$i} {
+    width: $i*1%;
+  }
+}
 
-// 无边框
-.no-border {
-  border: 0;
+// margin
+$direction: top, right, bottom, left;
+@each $type in margin, padding {
+  @each $d in $direction {
+    @for $i from 0 to 51 {
+      .#{$type}-#{$d}-#{$i} {
+        #{$type}-#{$d}: $i*1px;
+      }
+    }
+  }
+}
+
+@each $type in font-size {
+  @for $i from 0 to 31 {
+    .#{$type}-#{$i} {
+      #{$type}: $i*1px;
+    }
+  }
 }
 
 .margin0 {
@@ -45,45 +71,6 @@
   padding: 0;
 }
 
-// width class
-@for $i from 1 to 101 {
-  .width#{$i} {
-    width: $i*1%;
-  }
+.border0 {
+  border: 0;
 }
-
-// margin-left class
-@for $i from 1 to 101 {
-  .margin-left-#{$i} {
-    margin-left: $i*1px;
-  }
-}
-
-// margin-right class
-@for $i from 1 to 101 {
-  .margin-right-#{$i} {
-    margin-right: $i*1px;
-  }
-}
-
-// margin-top class
-@for $i from 1 to 101 {
-  .margin-top-#{$i} {
-    margin-top: $i*1px;
-  }
-}
-
-// margin-bottom class
-@for $i from 1 to 101 {
-  .margin-bottom-#{$i} {
-    margin-bottom: $i*1px;
-  }
-}
-
-// font-size class
-@for $i from 12 to 31 {
-  .font-size-#{$i} {
-    font-size: $i*1px;
-  }
-}
-

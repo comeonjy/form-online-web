@@ -1,13 +1,13 @@
 <template>
   <div class="left">
-    <template v-for="(option,optioni) in data.content.options" :key="option">
-      {{ option.option_content.text }}
-      <el-row>
-        <el-col :xs="24" :sm="20" :md="16" :lg="10">
-          <el-input v-model="inputValue[optioni]" :value="option.option_value"
-                    :label="option.option_content.text"></el-input>
-        </el-col>
-      </el-row>
+    <template v-for="(option,optionIndex) in data.content.options" :key="option">
+      <div class="margin-top-20">
+        <span>
+                  {{ option.option_content.text }}:
+        </span>
+        <el-input type="textarea" v-model="inputValue[optionIndex]"></el-input>
+      </div>
+
     </template>
   </div>
 </template>
@@ -36,9 +36,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/css/variables.scss';
 
-.el-input ::v-deep(.el-input__inner) {
-  border-width: 0 0 2px 0;
-  border-bottom: solid 2px $--color-primary;
-  border-radius: 0;
+.el-textarea ::v-deep(.el-textarea__inner) {
+  font-size: 16px;
 }
 </style>

@@ -1,15 +1,20 @@
 <template>
   <el-container>
-    <el-main >
-      <el-row>
-        <el-col style="background-color: white">
+    <el-main>
+      <el-row class="el-row-center">
+        <el-col :xs="0" :sm="3" :md="5" :lg="6" :xl="7"></el-col>
+        <el-col :xs="24" :sm="18" :md="14" :lg="12" :xl="10"
+                style="background-color: white;text-align:center ;max-width: 800px;">
           <el-row>
             <img src="../../public/images/img.webp" alt="" style="width: 100%;">
           </el-row>
           <el-row>
             <el-col>
-              <div class="font-size-22 margin-top-20 margin-bottom-20">{{ data.form_title }}</div>
-              <div class="font-size-16 color-grey">{{ data.sub_title }}</div>
+              <div class="font-size-24 margin-top-20 margin-bottom-20">{{ data.form_title }}</div>
+              <div class="font-size-18 margin-bottom-20 color-grey" v-if="data.sub_title!==''">{{
+                  data.sub_title
+                }}
+              </div>
               <div class="margin-left-20 margin-right-20">
 
                 <template v-for="(item,index) in data.items" :key="item">
@@ -32,10 +37,11 @@
             </el-col>
           </el-row>
         </el-col>
+        <el-col :xs="0" :sm="3" :md="5" :lg="6" :xl="7"></el-col>
+
       </el-row>
     </el-main>
     <el-footer>
-      底部
     </el-footer>
   </el-container>
 
@@ -58,6 +64,8 @@ export default {
     Radio,
     ContentTitle,
     Textarea
+  },
+  mounted() {
   },
   methods: {
     submit: function () {
@@ -95,6 +103,24 @@ export default {
                   option_value: '1'
                 },
                 {
+                  option_type: 'text',
+                  option_content: {
+                    text: '市场调研问卷',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '3'
+                },
+                {
+                  option_type: 'text',
+                  option_content: {
+                    text: '市场调研问卷',
+                    explain: '选项说明',
+                    img: 'http://a.png'
+                  },
+                  option_value: '4'
+                },
+                {
                   option_type: 'other',
                   option_content: {
                     text: '其他',
@@ -102,7 +128,7 @@ export default {
                     img: 'http://a.png'
                   },
                   option_value: '2'
-                }
+                },
               ],
               extend: {
                 require: true
@@ -219,14 +245,15 @@ export default {
 }
 </script>
 
-<style lang="scss" >
-@import '../assets/css/media-pc-wap.scss';
+<style lang="scss" scoped>
 
-.el-main{
+.el-main {
   padding: 0 !important;
 }
 
-.hi {
-  font-size: 16px
+.el-row-center {
+  display: flex;
+  justify-content: center; /*主轴上居中*/
+  align-items: center; /*侧轴上居中*/
 }
 </style>

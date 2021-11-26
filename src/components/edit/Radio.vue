@@ -35,13 +35,13 @@
     </div>
   </template>
   <div class="button-no-border">
-    <el-button @click="addSingle" class="no-border">
+    <el-button @click="addSingle" class="border0">
       <span style="color:#409eff;">
     <i class="el-icon-plus"></i>添加单个选项
     </span>
     </el-button>
 
-    <el-button @click="addOther" class="no-border">
+    <el-button @click="addOther" class="border0">
       <span style="color:#409eff;">
     <i class="el-icon-plus"></i>添加其他选项
     </span>
