@@ -251,9 +251,5 @@ export default {
   padding: 0 !important;
 }
 
-.el-row-center {
-  display: flex;
-  justify-content: center; /*主轴上居中*/
-  align-items: center; /*侧轴上居中*/
-}
+
 </style>
