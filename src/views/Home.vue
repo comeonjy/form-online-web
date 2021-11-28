@@ -23,19 +23,11 @@
       </draggable>
     </el-col>
 
-    <el-col :span="6">
-      <RawDisplayed class="col-3" :value="list1" title="List 1"/>
-    </el-col>
-    <el-col :span="6">
-      <RawDisplayed class="col-3" :value="list2" title="List 2"/>
-    </el-col>
-
   </el-row>
 </template>
 
 <script>
 import draggable from "vuedraggable";
-import RawDisplayed from "@/components/tool/RawDisplayed";
 import QuestionType from "@/components/edit/QuestionType";
 
 export default {
@@ -44,7 +36,6 @@ export default {
   order: 2,
   components: {
     draggable,
-    RawDisplayed,
     QuestionType
   },
   data() {

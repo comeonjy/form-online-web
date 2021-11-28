@@ -109,7 +109,7 @@ export default {
                     explain: '选项说明',
                     img: 'http://a.png'
                   },
-                  option_value: '3'
+                  option_value: '2'
                 },
                 {
                   option_type: 'text',
@@ -118,7 +118,7 @@ export default {
                     explain: '选项说明',
                     img: 'http://a.png'
                   },
-                  option_value: '4'
+                  option_value: '3'
                 },
                 {
                   option_type: 'other',
@@ -127,7 +127,7 @@ export default {
                     explain: '选项说明',
                     img: 'http://a.png'
                   },
-                  option_value: '2'
+                  option_value: '4'
                 },
               ],
               extend: {

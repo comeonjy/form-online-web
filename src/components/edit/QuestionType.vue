@@ -107,14 +107,62 @@ export default {
           }
         },
         {
-          id: 3,
-          type: 'select',
-          name: '下拉题'
+          name: '下拉题',
+          content: {
+            content_title: '请选择一个选项',
+            content_type: 'select',
+            options: [
+              {
+                option_type: 'text',
+                option_content: {
+                  text: '选项1',
+                  explain: '选项说明',
+                },
+                option_value: '1'
+              },
+              {
+                option_type: 'text',
+                option_content: {
+                  text: '选项2',
+                  explain: '选项说明',
+                },
+                option_value: '2'
+              }
+            ],
+            extend: {
+              require: true
+            },
+            userAnswer: {}
+          }
         },
         {
-          id: 4,
-          type: 'fillblank',
-          name: '填空题'
+          name: '填空题',
+          content: {
+            content_title: '请填写以下内容',
+            content_type: 'fillblank',
+            options: [
+              {
+                option_type: 'text',
+                option_content: {
+                  text: '填空1',
+                  explain: '选项说明',
+                },
+                option_value: '1'
+              },
+              {
+                option_type: 'text',
+                option_content: {
+                  text: '填空2',
+                  explain: '选项说明',
+                },
+                option_value: '2'
+              }
+            ],
+            extend: {
+              require: true
+            },
+            userAnswer: {}
+          }
         },
       ]
     }

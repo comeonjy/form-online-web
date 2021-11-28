@@ -26,7 +26,9 @@
             </div>
             <ContentTitle :index="index" v-model:content-title="element.content.content_title"></ContentTitle>
             <Radio :data="element" :index="index" v-if="element.content.content_type==='radio'"></Radio>
-            <CheckBox :data="element" :index="index" v-if="element.content.content_type==='checkbox'"></CheckBox>
+            <CheckBox :data="element" :index="index" v-else-if="element.content.content_type==='checkbox'"></CheckBox>
+            <Fillblank :data="element" :index="index" v-else-if="element.content.content_type==='fillblank'"></Fillblank>
+            <Select :data="element" :index="index" v-else-if="element.content.content_type==='select'"></Select>
           </el-card>
         </template>
       </draggable>
@@ -40,6 +42,8 @@ import draggable from "vuedraggable";
 import Radio from "@/components/edit/Radio";
 import ContentTitle from "@/components/edit/subcomponents/ContentTitle";
 import CheckBox from "@/components/edit/CheckBox";
+import Select from "@/components/edit/Select";
+import Fillblank from "@/components/edit/Fillblank";
 
 export default {
   name: "MainEdit",
@@ -47,6 +51,8 @@ export default {
     CheckBox,
     draggable,
     Radio,
+    Select,
+    Fillblank,
     ContentTitle
   },
   props: [

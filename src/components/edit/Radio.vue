@@ -2,31 +2,31 @@
   <template v-for="(option,index) in data.content.options" :key="option">
     <div class="left margin-left-20" @mouseenter="this.showOption[index]=true"
          @mouseleave="this.showOption[index]=false">
-        <el-radio  :label="1">
+      <el-radio :label="1">
 
-          <template v-if="option.option_type==='text'">
+        <template v-if="option.option_type==='text'">
               <span class="input-no-border">
               <el-input v-model="option.option_content.text" class="width80"></el-input>
              </span>
-          </template>
+        </template>
 
-          <template v-else-if="option.option_type==='other'">
+        <template v-else-if="option.option_type==='other'">
             <span class="input-no-border">
               <el-input v-model="option.option_content.text" class="width65"></el-input>
             </span>
-            <span class="other-input-mini">
+          <span class="other-input-mini">
             <el-input disabled size="mini" class="width15"></el-input>
             </span>
-          </template>
+        </template>
 
-          <span v-show="showOption[index]">
+        <span v-show="showOption[index]">
             <el-tooltip content="删除" placement="top" effect="light">
               <i class="el-icon-delete" @click="removeOption(index)"></i>
             </el-tooltip>
           </span>
 
 
-        </el-radio>
+      </el-radio>
     </div>
   </template>
   <div class="button-no-border">
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+
+import {ElMessage} from "element-plus";
 
 export default {
   name: 'Radio',
@@ -76,6 +78,15 @@ export default {
       this.$emit('update:data', arr)
     },
     addOther: function () {
+      for (let i = 0; i < this.data.content.options.length; i++) {
+        if (this.data.content.options[i].option_type === 'other') {
+          ElMessage({
+            type: 'error',
+            message: '其他选项只能存在一个',
+          })
+          return
+        }
+      }
       let arr = this.data.content.options
       arr.push(this.common.deepCopy(this.optionOtherTemplate))
       this.$emit('update:data', arr)

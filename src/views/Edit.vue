@@ -12,13 +12,6 @@
         </el-col>
         <el-col :span="4"></el-col>
       </el-row>
-
-      <el-row>
-        <el-col :span="6">
-          <RawDisplayed class="col-3" :value="data.items" title="List 2"/>
-        </el-col>
-      </el-row>
-
     </el-main>
     <el-footer></el-footer>
   </el-container>
@@ -27,12 +20,10 @@
 <script>
 import QuestionType from "@/components/edit/QuestionType";
 import MainEdit from "@/components/edit/MainEdit";
-import RawDisplayed from "@/components/tool/RawDisplayed";
 
 export default {
   name: "Edit",
   components: {
-    RawDisplayed,
     QuestionType,
     MainEdit
   },
@@ -51,11 +42,11 @@ export default {
       console.log(this.data.items)
       console.log(val)
       this.data.items.push(this.common.deepCopy(val))
-      // const len = this.data.items.length
-      // setTimeout(function () {
-      //   let id = 'content_' + (len - 1)
-      //   document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
-      // }, 100);
+      const len = this.data.items.length
+      setTimeout(function () {
+        let id = 'content_' + (len - 1)
+        document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
+      }, 100);
     }
   }
 }
