@@ -3,7 +3,7 @@ import {ElMessage} from "element-plus";
 const axios = require("axios");
 
 const service = axios.create({
-    baseURL: process.env["VUE_APP_ACCOUNT_BASE_API"],
+    baseURL: process.env["VUE_APP_FORM_BASE_API"],
     timeout: 10 * 1000,
 })
 
