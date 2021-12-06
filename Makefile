@@ -9,10 +9,10 @@ build:
 
 
 deploy:
-	cp default.conf dist/
-	docker build -t $(IMAGES_REPO)/$(SERVER_NAME):$(IMAGE_TAG) -f Dockerfile dist
-	echo "$(DOCKER_PSW)" | docker login --username=$(DOCKER_USR) $(REPO_DOMAIN) --password-stdin
-	docker push $(IMAGES_REPO)/$(SERVER_NAME):$(IMAGE_TAG)
+#	cp default.conf dist/
+#	docker build -t $(IMAGES_REPO)/$(SERVER_NAME):$(IMAGE_TAG) -f Dockerfile dist
+#	echo "$(DOCKER_PSW)" | docker login --username=$(DOCKER_USR) $(REPO_DOMAIN) --password-stdin
+#	docker push $(IMAGES_REPO)/$(SERVER_NAME):$(IMAGE_TAG)
 	git commit --allow-empty -am "deploy:$(IMAGE_TAG)"
 	git push
 
