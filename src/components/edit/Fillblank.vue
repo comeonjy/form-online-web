@@ -4,7 +4,7 @@
       <div class="margin-top-20 margin-left-20" @mouseenter="this.showOption[index]=true"
            @mouseleave="this.showOption[index]=false">
         <span class="input-no-border">
-              <el-input v-model="option.option_content.text" class="width80"></el-input>
+              <el-input v-model="option.optionContent.text" class="width80"></el-input>
             </span>
         <span v-show="showOption[index]">
             <el-tooltip content="删除" placement="top" effect="light">
@@ -39,8 +39,8 @@ export default {
     return {
       showOption: [],
       optionTemplate: {
-        option_type: 'text',
-        option_content: {
+        optionType: 'text',
+        optionContent: {
           text: '填空',
           explain: '选项说明',
         },

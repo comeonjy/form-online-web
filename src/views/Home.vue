@@ -1,61 +1,36 @@
 <template>
   <el-row>
-    <el-col :span="6">
-      <h3>Draggable 1</h3>
-<!--      <draggable class="dragArea list-group" :list="list1" :group="{ name: 'people', pull: 'clone', put: false }" @change="log" item-key="name">-->
-<!--        <template #item="{ element }">-->
-<!--          <div class="list-group-item">-->
-<!--            {{ element.name }}-->
-<!--          </div>-->
-<!--        </template>-->
-<!--      </draggable>-->
-      <QuestionType></QuestionType>
-    </el-col>
-
-    <el-col :span="6">
-      <h3>Draggable 2</h3>
-      <draggable class="dragArea list-group" :list="list2" group="people" @change="log" item-key="name">
-        <template #item="{ element }">
-          <div class="list-group-item">
-            {{ element.name }}
-          </div>
-        </template>
-      </draggable>
+    <el-col>
+      <el-card class="margin-top-20 margin-bottom-20" v-for="value in list" :key="value">
+        <p @click="$router.push({ name: 'Form', query: { uuid: value.uuid } })">{{ value.uuid }}</p>
+        <p>{{ value.formTitle }}</p>
+        <p>{{ value.subTitle }}</p>
+      </el-card>
     </el-col>
 
   </el-row>
 </template>
 
 <script>
-import draggable from "vuedraggable";
-import QuestionType from "@/components/edit/QuestionType";
+import {form_list} from "@/api/common";
 
 export default {
-  name: "clone",
-  display: "Clone",
-  order: 2,
-  components: {
-    draggable,
-    QuestionType
+  name: "Home",
+  components: {},
+  mounted() {
+    form_list().then((res) => {
+      console.log(res)
+      this.list = res.list
+    })
   },
   data() {
     return {
-      list1: [
-        {name: "John", id: 1},
-        {name: "Joao", id: 2},
-        {name: "Jean", id: 3},
-        {name: "Gerard", id: 4}
-      ],
-      list2: [
-        {name: "Juan", id: 5},
-        {name: "Edgard", id: 6},
-        {name: "Johnson", id: 7}
-      ]
+      list: {}
     };
   },
   methods: {
     log: function (evt) {
-      window.console.log(evt);
+      console.log(evt);
     }
   }
 };

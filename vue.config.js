@@ -7,10 +7,20 @@ module.exports = {
         proxy: {
             '/account': {
                 target: 'http://account.jiangyang.me',
+                // target: 'http://localhost:8080',
                 ws: true,
                 changOrigin: true,
                 pathRewrite: {
                     '^/account': ''
+                }
+            },
+            '/box': {
+                // target: 'http://box.jiangyang.me',
+                target: 'http://localhost:8080',
+                ws: true,
+                changOrigin: true,
+                pathRewrite: {
+                    '^/box': ''
                 }
             }
         }

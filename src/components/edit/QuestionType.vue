@@ -7,7 +7,7 @@
         <template #item="{ element }">
           <div class="list-group-item">
             <el-button @click="addContent(element)">
-              {{ element.name }}
+              {{ element.questionTypeName }}
             </el-button>
           </div>
         </template>
@@ -19,11 +19,18 @@
 
 <script>
 import draggable from "vuedraggable";
+import {list_question_type} from "@/api/common";
 
 export default {
   name: "QuestionType",
   components: {
     draggable
+  },
+  mounted() {
+    list_question_type().then((res) => {
+      console.log(res.list)
+      this.questionTypeList = res.list
+    })
   },
   props: [],
   emits: ['addContent'],
@@ -42,129 +49,7 @@ export default {
   },
   data: function () {
     return {
-      questionTypeList: [
-        {
-          name: '单选题',
-          content: {
-            content_title: '请选择一个选项',
-            content_type: 'radio',
-            options: [
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项1',
-                  explain: '选项说明',
-                },
-                option_value: '1'
-              },
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项2',
-                  explain: '选项说明',
-                },
-                option_value: '2'
-              }
-            ],
-            extend: {
-              require: true
-            },
-            userAnswer: {}
-          }
-        },
-        {
-          name: '多选题',
-          content: {
-            content_title: '请选择选项',
-            content_type: 'checkbox',
-            options: [
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项1',
-                  explain: '选项说明',
-                },
-                option_value: '1'
-              },
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项2',
-                  explain: '选项说明',
-                },
-                option_value: '2'
-              }
-            ],
-            extend: {
-              require: true
-            },
-            userAnswer: {
-              other: 'ok',
-              arrValue: [
-                '1'
-              ]
-            }
-          }
-        },
-        {
-          name: '下拉题',
-          content: {
-            content_title: '请选择一个选项',
-            content_type: 'select',
-            options: [
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项1',
-                  explain: '选项说明',
-                },
-                option_value: '1'
-              },
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '选项2',
-                  explain: '选项说明',
-                },
-                option_value: '2'
-              }
-            ],
-            extend: {
-              require: true
-            },
-            userAnswer: {}
-          }
-        },
-        {
-          name: '填空题',
-          content: {
-            content_title: '请填写以下内容',
-            content_type: 'fillblank',
-            options: [
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '填空1',
-                  explain: '选项说明',
-                },
-                option_value: '1'
-              },
-              {
-                option_type: 'text',
-                option_content: {
-                  text: '填空2',
-                  explain: '选项说明',
-                },
-                option_value: '2'
-              }
-            ],
-            extend: {
-              require: true
-            },
-            userAnswer: {}
-          }
-        },
-      ]
+      questionTypeList: {}
     }
   }
 }

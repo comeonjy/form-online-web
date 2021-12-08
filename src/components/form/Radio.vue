@@ -2,11 +2,11 @@
   <template v-for="(option) in data.content.options" :key="option">
     <div class="left">
       <el-radio-group v-model="radioValue">
-        <el-radio :label="option.option_value">
-          {{ option.option_content.text }}
-          <template v-if="option.option_type==='other'">
-            <el-input v-model="answerOther" v-show="userAnswer.select===option.option_value"
-                      @focus="focusOtherInput(option.option_value)"></el-input>
+        <el-radio :label="option.optionValue">
+          {{ option.optionContent.text }}
+          <template v-if="option.optionType==='other'">
+            <el-input v-model="answerOther" v-show="userAnswer.select===option.optionValue"
+                      @focus="focusOtherInput(option.optionValue)"></el-input>
           </template>
         </el-radio>
       </el-radio-group>

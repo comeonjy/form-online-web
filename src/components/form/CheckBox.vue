@@ -2,13 +2,13 @@
   <template v-for="(option) in data.content.options" :key="option">
     <div class="left">
       <el-checkbox-group v-model="checkboxList">
-        <el-checkbox :label="option.option_value">
-          <template v-if="option.option_type==='text'">
-            {{ option.option_content.text }}
+        <el-checkbox :label="option.optionValue">
+          <template v-if="option.optionType==='text'">
+            {{ option.optionContent.text }}
           </template>
-          <template v-else-if="option.option_type==='other'">
-            {{ option.option_content.text }}
-            <el-input v-model="answerOther" v-show="userAnswer.arrValue.includes(option.option_value)" @focus="focusOtherInput(option.option_value)"></el-input>
+          <template v-else-if="option.optionType==='other'">
+            {{ option.optionContent.text }}
+            <el-input v-model="answerOther" v-show="userAnswer.arrValue.includes(option.optionValue)" @focus="focusOtherInput(option.optionValue)"></el-input>
           </template>
         </el-checkbox>
         <br>

@@ -4,7 +4,7 @@
          @mouseleave="this.showOption[index]=false">
       <el-radio :label="1">
               <span class="input-no-border">
-              <el-input v-model="option.option_content.text" class="width80"></el-input>
+              <el-input v-model="option.optionContent.text" class="width80"></el-input>
              </span>
         <span v-show="showOption[index]">
             <el-tooltip content="删除" placement="top" effect="light">
@@ -33,15 +33,15 @@ export default {
     return {
       showOption: [],
       optionTemplate: {
-        option_type: 'text',
-        option_content: {
+        optionType: 'text',
+        optionContent: {
           text: '选项',
           explain: '选项说明',
         },
       },
       optionOtherTemplate: {
-        option_type: 'other',
-        option_content: {
+        optionType: 'other',
+        optionContent: {
           text: '选项',
           explain: '选项说明',
         },

@@ -10,23 +10,23 @@
           </el-row>
           <el-row>
             <el-col>
-              <div class="font-size-24 margin-top-20 margin-bottom-20">{{ data.form_title }}</div>
-              <div class="font-size-18 margin-bottom-20 color-grey" v-if="data.sub_title!==''">{{
-                  data.sub_title
+              <div class="font-size-24 margin-top-20 margin-bottom-20">{{ data.formTitle }}</div>
+              <div class="font-size-18 margin-bottom-20 color-grey" v-if="data.subTitle!==''">{{
+                  data.subTitle
                 }}
               </div>
               <div class="margin-left-20 margin-right-20">
 
                 <template v-for="(item,index) in data.items" :key="item">
-                  <ContentTitle :index="index" :content-title="item.content.content_title"></ContentTitle>
+                  <ContentTitle :index="index" :content-title="item.content.contentTitle"></ContentTitle>
                   <Radio :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                         v-if="item.content.content_type==='radio'"></Radio>
+                         v-if="item.content.contentType==='radio'"></Radio>
                   <CheckBox :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                            v-else-if="item.content.content_type==='checkbox'"></CheckBox>
+                            v-else-if="item.content.contentType==='checkbox'"></CheckBox>
                   <Select :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                          v-else-if="item.content.content_type==='select'"></Select>
+                          v-else-if="item.content.contentType==='select'"></Select>
                   <Textarea :data="item" :index="index" v-model:user-answer="item.content.userAnswer"
-                            v-else-if="item.content.content_type==='textarea'"></Textarea>
+                            v-else-if="item.content.contentType==='textarea'"></Textarea>
                 </template>
               </div>
             </el-col>
@@ -55,6 +55,8 @@ import CheckBox from '@/components/form/CheckBox'
 import Select from '@/components/form/Select'
 import ContentTitle from '@/components/form/subcomponents/ContentTitle'
 import Textarea from '@/components/form/Textarea'
+import {form_answer_save, form_single} from "@/api/common";
+import {useRoute} from "vue-router";
 
 export default {
   name: 'App',
@@ -66,6 +68,15 @@ export default {
     Textarea
   },
   mounted() {
+    const route = useRoute();
+    console.log(route.query.uuid);
+    form_single({
+      uuid: route.query.uuid,
+    }).then((res) => {
+      console.log(this.data)
+      console.log(res.form)
+      this.data=res.form
+    })
   },
   methods: {
     submit: function () {
@@ -74,172 +85,22 @@ export default {
         console.log(this.data.items[i].content.userAnswer)
         msg = msg + JSON.stringify(this.data.items[i].content.userAnswer)
       }
+      form_answer_save({
+        form:this.data
+      }).then((res)=>{
+        console.log(res)
+      })
       ElNotification({
         title: '提交',
         message: msg,
-        duration: 0
+        duration: 2000
       })
       console.log(JSON.stringify(this.data))
     }
   },
   data: function () {
     return {
-      data: {
-        form_title: '示例问卷',
-        sub_title: '欢迎使用问卷网！这是一份示例问卷。',
-        items: [
-          {
-            content: {
-              content_title: '问卷网支持创建哪些项目？',
-              content_type: 'radio',
-              options: [
-                {
-                  option_type: 'text',
-                  option_content: {
-                    text: '市场调研问卷',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '1'
-                },
-                {
-                  option_type: 'text',
-                  option_content: {
-                    text: '市场调研问卷',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '2'
-                },
-                {
-                  option_type: 'text',
-                  option_content: {
-                    text: '市场调研问卷',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '3'
-                },
-                {
-                  option_type: 'other',
-                  option_content: {
-                    text: '其他',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '4'
-                },
-              ],
-              extend: {
-                require: true
-              },
-              userAnswer: {
-                other: '',
-                select: '2'
-              }
-            }
-          },
-          {
-            content: {
-              content_title: '问卷网支持创建哪些项目？',
-              content_type: 'checkbox',
-              options: [
-                {
-                  option_type: 'text',
-                  option_content: {
-                    text: '市场调研问卷',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '1'
-                },
-                {
-                  option_type: 'other',
-                  option_content: {
-                    text: '其他',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '2'
-                }
-              ],
-              extend: {
-                require: true
-              },
-              userAnswer: {
-                other: 'ok',
-                arrValue: [
-                  '1'
-                ]
-              }
-            }
-          },
-          {
-            content: {
-              content_title: '问卷网支持创建哪些项目？',
-              content_type: 'select',
-              options: [
-                {
-                  option_type: 'text',
-                  option_content: {
-                    text: '市场调研问卷',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '1'
-                },
-                {
-                  option_type: 'other',
-                  option_content: {
-                    text: '其他',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '2'
-                }
-              ],
-              extend: {
-                require: true
-              },
-              userAnswer: {
-                select: '2'
-              }
-            }
-          },
-          {
-            content: {
-              content_title: '问卷网支持创建哪些项目？',
-              content_type: 'textarea',
-              options: [
-                {
-                  option_type: 'text',
-                  option_content: {
-                    text: '市场调研问卷',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '1'
-                },
-                {
-                  option_type: 'other',
-                  option_content: {
-                    text: '其他',
-                    explain: '选项说明',
-                    img: 'http://a.png'
-                  },
-                  option_value: '2'
-                }
-              ],
-              extend: {
-                require: true
-              },
-              userAnswer: {
-                arrValue: ['行动']
-              }
-            }
-          }
-        ]
-      }
+      data: {}
     }
   }
 }

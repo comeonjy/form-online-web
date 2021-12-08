@@ -4,15 +4,15 @@
          @mouseleave="this.showOption[index]=false">
         <el-checkbox class="width100" >
 
-          <template v-if="option.option_type==='text'">
+          <template v-if="option.optionType==='text'">
               <span class="input-no-border">
-              <el-input v-model="option.option_content.text" class="width80"></el-input>
+              <el-input v-model="option.optionContent.text" class="width80"></el-input>
              </span>
           </template>
 
-          <template v-else-if="option.option_type==='other'">
+          <template v-else-if="option.optionType==='other'">
             <span class="input-no-border">
-              <el-input v-model="option.option_content.text" class="width65"></el-input>
+              <el-input v-model="option.optionContent.text" class="width65"></el-input>
             </span>
             <span class="other-input-mini">
             <el-input disabled size="mini" class="width15"></el-input>
@@ -55,15 +55,15 @@ export default {
     return {
       showOption: [],
       optionTemplate: {
-        option_type: 'text',
-        option_content: {
+        optionType: 'text',
+        optionContent: {
           text: '选项',
           explain: '选项说明',
         },
       },
       optionOtherTemplate: {
-        option_type: 'other',
-        option_content: {
+        optionType: 'other',
+        optionContent: {
           text: '选项',
           explain: '选项说明',
         },
@@ -78,7 +78,7 @@ export default {
     },
     addOther: function () {
       for (let i = 0; i < this.data.content.options.length; i++) {
-        if (this.data.content.options[i].option_type === 'other') {
+        if (this.data.content.options[i].optionType === 'other') {
           ElMessage({
             type: 'error',
             message: '其他选项只能存在一个',

@@ -3,7 +3,7 @@
     <template v-for="(option,optionIndex) in data.content.options" :key="option">
       <div class="margin-top-20">
         <span>
-                  {{ option.option_content.text }}:
+                  {{ option.optionContent.text }}:
         </span>
         <el-input type="textarea" v-model="inputValue[optionIndex]"></el-input>
       </div>

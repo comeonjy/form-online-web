@@ -7,8 +7,9 @@
           <QuestionType @add-content="addContent"></QuestionType>
         </el-col>
         <el-col :span="16">
-          <MainEdit v-model:data="data.items" v-model:sub_title="data.sub_title"
-                    v-model:form_title="data.form_title"></MainEdit>
+          <MainEdit v-model:data="data.items" v-model:sub-title="data.subTitle"
+                    v-model:form-title="data.formTitle"></MainEdit>
+          <el-button class="margin-top-40" type="primary" @click="saveForm">保存</el-button>
         </el-col>
         <el-col :span="4"></el-col>
       </el-row>
@@ -20,6 +21,7 @@
 <script>
 import QuestionType from "@/components/edit/QuestionType";
 import MainEdit from "@/components/edit/MainEdit";
+import {form_save} from "@/api/common";
 
 export default {
   name: "Edit",
@@ -31,8 +33,8 @@ export default {
     return {
       showBorder: [],
       data: {
-        form_title: '问卷标题',
-        sub_title: '感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！',
+        formTitle: '问卷标题',
+        subTitle: '感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！',
         items: []
       },
     }
@@ -47,7 +49,15 @@ export default {
         let id = 'content_' + (len - 1)
         document.getElementById(id).scrollIntoView({block: 'center', behavior: 'smooth'})
       }, 100);
-    }
+    },
+    saveForm:function (){
+      console.log(this.data)
+      form_save({
+        form:this.data
+      }).then((res)=>{
+        console.log(res)
+      })
+    },
   }
 }
 </script>

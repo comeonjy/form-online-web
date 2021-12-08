@@ -9,6 +9,7 @@ build:
 
 
 deploy:
+	npm run build
 	cp default.conf dist/
 	docker build -t $(IMAGES_REPO)/$(SERVER_NAME):$(IMAGE_TAG) -f Dockerfile dist
 	echo "$(DOCKER_PSW)" | docker login --username=$(DOCKER_USR) $(REPO_DOMAIN) --password-stdin

@@ -3,8 +3,8 @@
     <el-col>
       <el-card>
          <span class="input-no-border">
-               <el-input v-model="formTitle"></el-input>
-                <el-input v-model="subTitle"></el-input>
+               <el-input v-model="formTitleInput"></el-input>
+                <el-input v-model="subTitleInput"></el-input>
          </span>
       </el-card>
     </el-col>
@@ -24,11 +24,11 @@
                 <i class="el-icon-delete" @click="removeContent(index)"></i>
               </el-tooltip>
             </div>
-            <ContentTitle :index="index" v-model:content-title="element.content.content_title"></ContentTitle>
-            <Radio :data="element" :index="index" v-if="element.content.content_type==='radio'"></Radio>
-            <CheckBox :data="element" :index="index" v-else-if="element.content.content_type==='checkbox'"></CheckBox>
-            <Fillblank :data="element" :index="index" v-else-if="element.content.content_type==='fillblank'"></Fillblank>
-            <Select :data="element" :index="index" v-else-if="element.content.content_type==='select'"></Select>
+            <ContentTitle :index="index" v-model:content-title="element.content.contentTitle"></ContentTitle>
+            <Radio :data="element" :index="index" v-if="element.content.contentType==='radio'"></Radio>
+            <CheckBox :data="element" :index="index" v-else-if="element.content.contentType==='checkbox'"></CheckBox>
+            <Fillblank :data="element" :index="index" v-else-if="element.content.contentType==='fillblank'"></Fillblank>
+            <Select :data="element" :index="index" v-else-if="element.content.contentType==='select'"></Select>
           </el-card>
         </template>
       </draggable>
@@ -56,28 +56,28 @@ export default {
     ContentTitle
   },
   props: [
-    'data', 'form_title', 'sub_title'
+    'data', 'formTitle', 'subTitle'
   ],
   emits: [
-    'update:data', 'update:form_title', 'update:sub_title'
+    'update:data', 'update:formTitle', 'update:subTitle'
   ],
   computed: {
-    formTitle: {
+    formTitleInput: {
       get: function () {
-        return this.form_title
+        return this.formTitle
       },
       set: function (val) {
         console.log(val)
-        this.$emit('update:form_title', val)
+        this.$emit('update:formTitle', val)
       }
     },
-    subTitle: {
+    subTitleInput: {
       get: function () {
-        return this.sub_title
+        return this.subTitle
       },
       set: function (val) {
         console.log(val)
-        this.$emit('update:sub_title', val)
+        this.$emit('update:subTitle', val)
       }
     }
   },
