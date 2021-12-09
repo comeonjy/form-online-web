@@ -21,13 +21,25 @@
 <script>
 import QuestionType from "@/components/edit/QuestionType";
 import MainEdit from "@/components/edit/MainEdit";
-import {form_save} from "@/api/common";
+import {form_save, form_single} from "@/api/common";
+import {useRoute} from "vue-router";
 
 export default {
   name: "Edit",
   components: {
     QuestionType,
     MainEdit
+  },
+  mounted() {
+    const route = useRoute();
+    console.log(route.query.uuid);
+    form_single({
+      uuid: route.query.uuid,
+    }).then((res) => {
+      console.log(this.data)
+      console.log(res.form)
+      this.data=res.form
+    })
   },
   data: function () {
     return {
@@ -56,6 +68,12 @@ export default {
         form:this.data
       }).then((res)=>{
         console.log(res)
+      })
+      this.$alert('提交成功!', '', {
+        confirmButtonText: 'OK',
+        callback: () => {
+          this.$router.push({name: 'Home'})
+        },
       })
     },
   }

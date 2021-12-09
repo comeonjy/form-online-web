@@ -15,8 +15,8 @@ module.exports = {
                 }
             },
             '/box': {
-                // target: 'http://box.jiangyang.me',
-                target: 'http://localhost:8080',
+                target: 'http://box.jiangyang.me',
+                // target: 'http://localhost:8080',
                 ws: true,
                 changOrigin: true,
                 pathRewrite: {

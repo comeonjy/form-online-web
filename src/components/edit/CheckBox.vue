@@ -2,30 +2,30 @@
   <template v-for="(option,index) in data.content.options" :key="option">
     <div class="left margin-left-20" @mouseenter="this.showOption[index]=true"
          @mouseleave="this.showOption[index]=false">
-        <el-checkbox class="width100" >
+      <el-checkbox class="width100">
 
-          <template v-if="option.optionType==='text'">
+        <template v-if="option.optionType==='text'">
               <span class="input-no-border">
               <el-input v-model="option.optionContent.text" class="width80"></el-input>
              </span>
-          </template>
+        </template>
 
-          <template v-else-if="option.optionType==='other'">
+        <template v-else-if="option.optionType==='other'">
             <span class="input-no-border">
               <el-input v-model="option.optionContent.text" class="width65"></el-input>
             </span>
-            <span class="other-input-mini">
+          <span class="other-input-mini">
             <el-input disabled size="mini" class="width15"></el-input>
             </span>
-          </template>
+        </template>
 
-          <span v-show="showOption[index]">
+        <span v-show="showOption[index]">
             <el-tooltip content="删除" placement="top" effect="light">
               <i class="el-icon-delete" @click="removeOption(index)"></i>
             </el-tooltip>
           </span>
 
-        </el-checkbox>
+      </el-checkbox>
     </div>
   </template>
   <div class="button-no-border">
@@ -56,6 +56,7 @@ export default {
       showOption: [],
       optionTemplate: {
         optionType: 'text',
+        optionValue: '',
         optionContent: {
           text: '选项',
           explain: '选项说明',
@@ -63,6 +64,7 @@ export default {
       },
       optionOtherTemplate: {
         optionType: 'other',
+        optionValue: '',
         optionContent: {
           text: '选项',
           explain: '选项说明',
@@ -73,6 +75,7 @@ export default {
   methods: {
     addSingle: function () {
       let arr = this.data.content.options
+      this.optionTemplate.optionValue = String(arr.length + 1)
       arr.push(this.common.deepCopy(this.optionTemplate))
       this.$emit('update:data', arr)
     },
@@ -87,6 +90,7 @@ export default {
         }
       }
       let arr = this.data.content.options
+      this.optionOtherTemplate.optionValue = String(arr.length + 1)
       arr.push(this.common.deepCopy(this.optionOtherTemplate))
       this.$emit('update:data', arr)
     },

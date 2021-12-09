@@ -2,9 +2,10 @@
   <el-row>
     <el-col>
       <el-card class="margin-top-20 margin-bottom-20" v-for="value in list" :key="value">
-        <p @click="$router.push({ name: 'Form', query: { uuid: value.uuid } })">{{ value.uuid }}</p>
         <p>{{ value.formTitle }}</p>
         <p>{{ value.subTitle }}</p>
+        <el-button type="primary" @click="$router.push({ name: 'Form', query: { uuid: value.uuid } })">查看</el-button>
+        <el-button type="primary" @click="$router.push({ name: 'Edit', query: { uuid: value.uuid } })">编辑</el-button>
       </el-card>
     </el-col>
 

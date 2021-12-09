@@ -75,7 +75,7 @@ export default {
     }).then((res) => {
       console.log(this.data)
       console.log(res.form)
-      this.data=res.form
+      this.data = res.form
     })
   },
   methods: {
@@ -86,8 +86,8 @@ export default {
         msg = msg + JSON.stringify(this.data.items[i].content.userAnswer)
       }
       form_answer_save({
-        form:this.data
-      }).then((res)=>{
+        form: this.data
+      }).then((res) => {
         console.log(res)
       })
       ElNotification({
@@ -95,6 +95,13 @@ export default {
         message: msg,
         duration: 2000
       })
+      this.$alert('提交成功!', '', {
+        confirmButtonText: 'OK',
+        callback: () => {
+          this.$router.push({name: 'Home'})
+        },
+      })
+
       console.log(JSON.stringify(this.data))
     }
   },

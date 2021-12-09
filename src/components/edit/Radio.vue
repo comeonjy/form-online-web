@@ -57,6 +57,7 @@ export default {
       showOption: [],
       optionTemplate: {
         optionType: 'text',
+        optionValue: '',
         optionContent: {
           text: '选项',
           explain: '选项说明',
@@ -64,6 +65,7 @@ export default {
       },
       optionOtherTemplate: {
         optionType: 'other',
+        optionValue: '',
         optionContent: {
           text: '选项',
           explain: '选项说明',
@@ -74,6 +76,7 @@ export default {
   methods: {
     addSingle: function () {
       let arr = this.data.content.options
+      this.optionTemplate.optionValue = String(arr.length + 1)
       arr.push(this.common.deepCopy(this.optionTemplate))
       this.$emit('update:data', arr)
     },
@@ -88,6 +91,7 @@ export default {
         }
       }
       let arr = this.data.content.options
+      this.optionOtherTemplate.optionValue=String(arr.length+1)
       arr.push(this.common.deepCopy(this.optionOtherTemplate))
       this.$emit('update:data', arr)
     },

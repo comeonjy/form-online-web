@@ -34,13 +34,7 @@ export default {
       showOption: [],
       optionTemplate: {
         optionType: 'text',
-        optionContent: {
-          text: '选项',
-          explain: '选项说明',
-        },
-      },
-      optionOtherTemplate: {
-        optionType: 'other',
+        optionValue: '',
         optionContent: {
           text: '选项',
           explain: '选项说明',
@@ -51,6 +45,7 @@ export default {
   methods: {
     addSingle: function () {
       let arr = this.data.content.options
+      this.optionTemplate.optionValue = String(arr.length + 1)
       arr.push(this.common.deepCopy(this.optionTemplate))
       this.$emit('update:data', arr)
     },
@@ -80,13 +75,14 @@ i:hover {
   margin: 5px;
 }
 
-::v-deep(.el-radio__inner){
+::v-deep(.el-radio__inner) {
   margin-top: 5px;
   border: 7px solid transparent;
   border-top: 8px solid #9d9fa1;
   border-radius: 0;
 }
-::v-deep(.el-radio__inner:hover){
+
+::v-deep(.el-radio__inner:hover) {
   margin-top: 5px;
   border: 7px solid transparent;
   border-top: 8px solid #9d9fa1;
