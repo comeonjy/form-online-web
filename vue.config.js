@@ -6,7 +6,7 @@ module.exports = {
         https: false,
         proxy: {
             '/account': {
-                target: 'http://account.jiangyang.me',
+                target: 'http://account.default',
                 // target: 'http://localhost:8080',
                 ws: true,
                 changOrigin: true,
@@ -15,7 +15,7 @@ module.exports = {
                 }
             },
             '/box': {
-                target: 'http://box.jiangyang.me',
+                target: 'http://box.default',
                 // target: 'http://localhost:8080',
                 ws: true,
                 changOrigin: true,
