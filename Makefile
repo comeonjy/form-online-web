@@ -1,4 +1,7 @@
-include env.make
+#DOCKER_PSW:=xxx
+#DOCKER_USR:=xxx
+#IMAGES_REPO:=ccr.ccs.tencentyun.com/xxx
+#REPO_DOMAIN:=ccr.ccs.tencentyun.com
 
 SERVER_NAME:=form-online-web
 IMAGE_TAG:=v0.0.1
